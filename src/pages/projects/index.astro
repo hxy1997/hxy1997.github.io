@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+
+const projects = (await getCollection("projects")).sort((a, b) =>
+  b.data.featured === a.data.featured ? a.data.title.localeCompare(b.data.title) : Number(b.data.featured) - Number(a.data.featured),
+);
+---
+
+<BaseLayout title="项目" description="项目列表采用卡片式展示，支持进入详情页查看背景、职责与技术结构。">
+  <section class="section-space pt-2">
+    <SectionHeading
+      eyebrow="Projects"
+      title="项目与作品"
+      description="这里收纳我的一些个人作品、内容站和实验性项目，列表页保持信息密度克制，详情页再展开背景、职责和实现思路。"
+    />
+    <div class="grid gap-6 lg:grid-cols-2">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+</BaseLayout>

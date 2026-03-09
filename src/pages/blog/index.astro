@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogCard from "../../components/BlogCard.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const featured = posts.find((post) => post.data.featured) ?? posts[0];
+const rest = featured ? posts.filter((post) => post.slug !== featured.slug) : [];
+---
+
+<BaseLayout title="博客" description="记录项目复盘、界面设计思考和一些值得沉淀的技术笔记。">
+  <section class="section-space pt-2">
+    <SectionHeading
+      eyebrow="Blog"
+      title="博客与笔记"
+      description="内容使用本地 Markdown 管理，方便在 GitHub 上直接维护，也便于后续继续扩展标签、RSS 或搜索。"
+    />
+    <div class="grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
+      {featured && <BlogCard post={featured} featured />}
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-1">
+        {rest.map((post) => <BlogCard post={post} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
