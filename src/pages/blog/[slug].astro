@@ -2,41 +2,8 @@
 import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { formatDate } from "../../utils/format";
-
-export async function getStaticPaths() {
-  const posts = await getCollection("blog");
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
-}
-
-const { post } = Astro.props as { post: CollectionEntry<"blog"> };
+import { formatDate } from "../../utils/format"; export async function getStaticPaths() { const posts = await getCollection("blog"); return posts.map((post) => ({ params: { slug: post.slug }, props: { post }, }));
+} const { post } = Astro.props as { post: CollectionEntry<"blog"> };
 const { Content } = await render(post);
----
-
-<BaseLayout title={post.data.title} description={post.data.description}>
-  <section class="section-space pt-2">
-    <article class="panel panel-strong rounded-[36px] border border-slate-200/80 p-8 dark:border-white/10 md:p-10">
-      <p class="eyebrow">Blog Detail</p>
-      <h1 class="mt-5 font-display text-4xl font-semibold tracking-tight text-[var(--text-main)] md:text-5xl">
-        {post.data.title}
-      </h1>
-      <p class="mt-5 max-w-3xl text-lg leading-8 text-[var(--text-muted)]">{post.data.description}</p>
-      <div class="mt-7 flex flex-wrap items-center gap-3 text-sm text-[var(--text-soft)]">
-        <span>{formatDate(post.data.pubDate)}</span>
-        {post.data.updatedDate && <span>更新于 {formatDate(post.data.updatedDate)}</span>}
-        {post.data.tags.map((tag) => <span class="chip rounded-full">#{tag}</span>)}
-      </div>
-    </article>
-  </section>
-
-  <section class="section-space pt-0">
-    <article class="panel rounded-[36px] border border-slate-200/80 p-8 dark:border-white/10 md:p-10">
-      <div class="rich-text">
-        <Content />
-      </div>
-    </article>
-  </section>
+--- <BaseLayout title={post.data.title} description={post.data.description}> <section class="section-space pt-2"> <article class="panel panel-strong rounded-[36px] border border-[color:var(--panel-border)] p-8 md:p-10"> <p class="eyebrow">Blog Detail</p> <h1 class="mt-5 font-display text-4xl font-semibold tracking-tight text-[var(--text-main)] md:text-5xl"> {post.data.title} </h1> <p class="mt-5 max-w-3xl text-lg leading-8 text-[var(--text-muted)]">{post.data.description}</p> <div class="mt-7 flex flex-wrap items-center gap-3 text-sm text-[var(--text-soft)]"> <span>{formatDate(post.data.pubDate)}</span> {post.data.updatedDate && <span>更新于 {formatDate(post.data.updatedDate)}</span>} {post.data.tags.map((tag) => <span class="chip rounded-full">#{tag}</span>)} </div> </article> </section> <section class="section-space pt-0"> <article class="panel rounded-[36px] border border-[color:var(--panel-border)] p-8 md:p-10"> <div class="rich-text"> <Content /> </div> </article> </section>
 </BaseLayout>
