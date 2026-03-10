@@ -34,8 +34,8 @@
   --text-main: #111111;
   --text-muted: #3f3f46;
   --text-soft: #71717a;
-  --hero-glow: rgba(255, 255, 255, 0.34);
-  --hero-glow-strong: rgba(196, 181, 253, 0.16);
+  --hero-glow: rgba(255, 255, 255, 0.3);
+  --hero-glow-strong: rgba(196, 181, 253, 0.2);
   --button-main: #c4b5fd;
   --button-main-hover: #b39afc;
   --button-secondary: linear-gradient(135deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.12));
@@ -57,7 +57,7 @@
   --text-muted: #d4d4d8;
   --text-soft: #a1a1aa;
   --hero-glow: rgba(255, 255, 255, 0.03);
-  --hero-glow-strong: rgba(196, 181, 253, 0.12);
+  --hero-glow-strong: rgba(196, 181, 253, 0.16);
   --button-main: #c4b5fd;
   --button-main-hover: #a78bfa;
   --button-secondary: linear-gradient(135deg, rgba(39, 39, 42, 0.3), rgba(24, 24, 27, 0.12));
