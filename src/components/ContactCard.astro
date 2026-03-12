@@ -2,20 +2,26 @@
 import { siteConfig } from "../data/site";
 ---
 
-<div class="panel rounded-[32px] border border-[color:var(--panel-border)] p-7 md:p-8">
-  <div class="flex items-start justify-between gap-4">
+<div class="panel relative overflow-hidden rounded-[32px] border border-[color:var(--panel-border)] p-7 md:p-8">
+  <div aria-hidden="true" class="pointer-events-none absolute -right-10 bottom-0 h-24 w-24 rounded-full bg-[color:var(--button-main)]/12 blur-3xl"></div>
+  <div aria-hidden="true" class="pointer-events-none absolute right-7 top-7 flex items-center gap-2 opacity-55">
+    <span class="h-2 w-2 rounded-full border border-[color:var(--button-main-hover)]/70"></span>
+    <span class="h-px w-8 bg-[color:var(--button-main-hover)]/45"></span>
+  </div>
+
+  <div class="relative flex items-start justify-between gap-4">
     <div>
       <p class="eyebrow">Stay in touch</p>
       <h3 class="mt-3 font-display text-2xl font-semibold text-[var(--text-main)]">邮箱 / GitHub / 微信</h3>
     </div>
-    <span class="rounded-full border border-[color:var(--panel-border)] bg-white/40 px-3 py-1 text-xs text-[var(--text-soft)] dark:bg-white/8">Contact</span>
+    <span class="badge-pill">Contact</span>
   </div>
 
-  <div class="mt-6 grid gap-4 text-sm text-[var(--text-muted)]">
-    <a class="rounded-[24px] border border-[color:var(--panel-border)] bg-white/38 px-4 py-4 transition hover:border-[color:var(--button-main)] hover:text-[color:var(--button-main-hover)] dark:bg-white/4" href={`mailto:${siteConfig.email}`}>
+  <div class="relative mt-6 grid gap-4 text-sm text-[var(--text-muted)]">
+    <a class="rounded-[24px] border border-[color:var(--panel-border)] bg-white/38 px-4 py-4 break-all transition hover:border-[color:var(--button-main)] hover:text-[color:var(--button-main-hover)] dark:bg-white/4" href={`mailto:${siteConfig.email}`}>
       {siteConfig.email}
     </a>
-    <a class="rounded-[24px] border border-[color:var(--panel-border)] bg-white/38 px-4 py-4 transition hover:border-[color:var(--button-main)] hover:text-[color:var(--button-main-hover)] dark:bg-white/4" href={siteConfig.github} target="_blank" rel="noreferrer">
+    <a class="rounded-[24px] border border-[color:var(--panel-border)] bg-white/38 px-4 py-4 break-all transition hover:border-[color:var(--button-main)] hover:text-[color:var(--button-main-hover)] dark:bg-white/4" href={siteConfig.github} target="_blank" rel="noreferrer">
       {siteConfig.github}
     </a>
     <div class="rounded-[24px] border border-dashed border-[color:var(--panel-border)] bg-white/30 px-4 py-4 text-[var(--text-soft)] dark:bg-white/3">
