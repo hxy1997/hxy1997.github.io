@@ -75,7 +75,7 @@ body::before {
   z-index: -3;
   background:
     linear-gradient(180deg, rgba(250, 248, 244, 0.34), rgba(244, 241, 236, 0.3)),
-    url("/images/forest.png") center top / cover no-repeat;
+    url("/images/forest.png") center top / auto 100% no-repeat;
   opacity: 0.8;
   content: "";
   pointer-events: none;
@@ -84,7 +84,7 @@ body::before {
 .dark body::before {
   background:
     linear-gradient(180deg, rgba(18, 17, 20, 0.48), rgba(24, 22, 28, 0.42)),
-    url("/images/forest.png") center top / cover no-repeat;
+    url("/images/forest.png") center top / auto 100% no-repeat;
   opacity: 0.8;
   filter: saturate(0.7) brightness(0.68);
 }
