@@ -2,11 +2,50 @@
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
 import { siteConfig } from "../data/site";
-import "../styles/global.css"; interface Props { title?: string; description?: string;
-} const { title = siteConfig.name, description = siteConfig.description,
-} = Astro.props; const pageTitle = title === siteConfig.name ? title : `${title} | ${siteConfig.name}`;
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = siteConfig.name, description = siteConfig.description } = Astro.props;
+const pageTitle = title === siteConfig.name ? title : `${title} | ${siteConfig.name}`;
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
 const baseUrl = import.meta.env.BASE_URL;
---- <!doctype html>
-<html lang="zh-CN"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <meta name="generator" content={Astro.generator} /> <title>{pageTitle}</title> <meta name="description" content={description} /> <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} /> {canonical && <link rel="canonical" href={canonical} />} <meta property="og:title" content={pageTitle} /> <meta property="og:description" content={description} /> <meta property="og:type" content="website" /> {canonical && <meta property="og:url" content={canonical} />} <script is:inline> (() => { const storageKey = "theme"; const saved = localStorage.getItem(storageKey); const theme = saved ?? "light"; document.documentElement.classList.toggle("dark", theme === "dark"); document.documentElement.dataset.theme = theme; })(); </script> </head> <body> <div class="relative min-h-screen pb-6 pt-4"> <NavBar /> <main class="shell pb-20 pt-8 md:pt-12"> <slot /> </main> <Footer /> </div> </body>
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <script is:inline>
+      (() => {
+        const storageKey = "theme";
+        const saved = localStorage.getItem(storageKey);
+        const theme = saved ?? "light";
+        document.documentElement.classList.toggle("dark", theme === "dark");
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="relative min-h-screen pb-6 pt-4 md:pt-5">
+      <NavBar />
+      <main class="shell pb-20 pt-8 md:pt-12">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
 </html>

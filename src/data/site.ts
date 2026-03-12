@@ -10,7 +10,7 @@ export const siteConfig = {
   intro:
     "关注个人主页、内容系统和体验细节，偏好做克制但不平庸的界面，也乐于把复杂流程整理成可持续维护的产品结构。",
   email: "root_he@outlook.com",
-  github: "https://github.com/yourname",
+  github: "https://github.com/hxy1997",
   wechat: "Zeriro",
   nav: [
     { href: "/", label: "首页" },
