@@ -108,7 +108,7 @@ body::after {
 }
 
 .section-space {
-  padding-block: clamp(4rem, 8vw, 6.5rem);
+  padding-block: clamp(2.8rem, 5.5vw, 4.5rem);
 }
 
 .panel {
